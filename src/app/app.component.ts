@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CMQM_WS1';
+
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService
+  ){}
+
+  isAuthenticated(): boolean{
+    return this.authService.isLoggedIn();
+  }
+
+  logout():void{
+    this.authService.logout();
+    this.router.navigate(["/login"]);
+  }
+  
 }
