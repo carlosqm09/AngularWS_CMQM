@@ -1,15 +1,7 @@
-<div style="width: 100%
-;">
-  <div style="display: flex; align-content: center; justify-content: center;">
-<div>
-  <router-outlet>
-  <li><a routerLink="welcome">Welcome</a></li>
-  <li><a routerLink="login">Login</a></li>
-  <li><a routerLink="unicorns">Unicorns</a></li>
-  </router-outlet>
-</div>
-  </div>
-</div>
-<mat-toolbar>
-  <div>Hola mundo</div>
+<mat-toolbar *ngIf="isAuthenticated()">
+  <a routerLink="welcome" mat-button>Inicio</a>
+  <a routerLink="unicorns" mat-button>CRUD</a>
+  <a (click)="logout()" mat-button>Cerrar sesion</a>
 </mat-toolbar>
+
+<router-outlet></router-outlet>
